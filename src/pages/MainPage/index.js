@@ -9,7 +9,7 @@ import styled from 'styled-components';
 const MainPage = () => {
   return (
     <Container>
-      <Nav />
+      {/* <Nav /> */}
       <Banner />
       <Category />
       <Row

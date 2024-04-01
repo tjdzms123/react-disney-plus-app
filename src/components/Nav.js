@@ -12,9 +12,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser, setUser } from '../store/userSlice';
 
 const Nav = () => {
-  const initialUserData = localStorage.getItem('userData')
-    ? JSON.parse(localStorage.getItem('userData'))
-    : {};
+  // const initialUserData = localStorage.getItem('userData')
+  //   ? JSON.parse(localStorage.getItem('userData'))
+  //   : {};
 
   const navigate = useNavigate();
 
@@ -25,6 +25,7 @@ const Nav = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const auth = getAuth();
+  console.log(auth);
   const provider = new GoogleAuthProvider();
 
   // const [userData, setUserData] = useState(initialUserData);
@@ -32,6 +33,7 @@ const Nav = () => {
   const dispatch = useDispatch();
 
   const userData = useSelector(state => state.user);
+  console.log(userData);
 
   useEffect(() => {
     onAuthStateChanged(auth, user => {
@@ -69,6 +71,7 @@ const Nav = () => {
     signInWithPopup(auth, provider)
       .then(result => {
         // setUserData(result.user);
+        // console.log(result);
         dispatch(
           setUser({
             id: result.user.uid,
